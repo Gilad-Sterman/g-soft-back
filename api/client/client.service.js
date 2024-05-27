@@ -62,6 +62,15 @@ https://www.linkedin.com/in/gilad-sterman-7b2469278/
 https://github.com/Gilad-Sterman
 http://www.g-soft.site/ `,
         }
+
+        const alertMail = {
+            from: "g.sterman.cp@gmail.com",
+            to: "giladsterman1999@gmail.com",
+            subject: "New client",
+            text: `New potential client
+            Name: ${client.name}
+            Email: ${client.email}`
+        }
         const collection = await dbService.getCollection('clients')
         await collection.insertOne(clientToAdd)
         transporter.sendMail(mailOptions, (error, info) => {
@@ -69,6 +78,14 @@ http://www.g-soft.site/ `,
                 console.error("Error sending email: ", error);
             } else {
                 console.log("Email sent: ", info.response);
+            }
+        })
+
+        transporter.sendMail(alertMail, (error, info) => {
+            if (error) {
+                console.error("Error sending alert email: ", error);
+            } else {
+                console.log("Alert email sent: ", info.response);
             }
         })
 
