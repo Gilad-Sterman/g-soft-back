@@ -65,11 +65,9 @@ http://www.g-soft.site/ `,
 
         const alertMail = {
             from: "g.sterman.cp@gmail.com",
-            to: "giladsterman1999@gmail.com",
+            to: "g.sterman.cp@gmail.com",
             subject: "New client",
-            text: `New potential client
-            Name: ${client.name}
-            Email: ${client.email}`
+            text: `Name: ${client.name}, Email: ${client.email}`
         }
         const collection = await dbService.getCollection('clients')
         await collection.insertOne(clientToAdd)
