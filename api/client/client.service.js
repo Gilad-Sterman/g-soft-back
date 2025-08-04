@@ -27,7 +27,7 @@ const transporter = nodemailer.createTransport({
 async function add(client) {
     try {
         const existClient = await getByEmail(client.email)
-        if (existClient) return existClient
+        // if (existClient) return existClient
 
         const clientToAdd = {
             email: client.email,
